@@ -4,7 +4,7 @@ const { DefaultAzureCredential } = require('@azure/identity');
 const { SecretClient } = require('@azure/keyvault-secrets');
 
 const app = express();
-const port = process.env.PORT || 2222;
+const port = process.env.PORT || 8080;
 
 // Azure Key Vault Bilgileri
 const kvUrl = "https://keyv-project-kemalozan.vault.azure.net/";
