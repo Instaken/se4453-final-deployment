@@ -14,7 +14,7 @@ permissions:
 jobs:
   build:
     # Sadece merge edilmiş PR'lar için çalışsın
-    if: github.event.pull_request.merged == true && github.event.pull_request.head.ref == 'development'
+    if: github.event.pull_request.merged == true && github.event.pull_request.head.ref == 'dev'
     runs-on: ubuntu-latest
 
     steps:
@@ -52,3 +52,10 @@ jobs:
         with:
           app-name: ${{ vars.AZURE_WEBAPP_NAME }}
           images: ${{ vars.ACR_NAME }}.azurecr.io/${{ vars.IMAGE_NAME }}:latest
+
+      - name: Set SSH Password in Azure Web App
+        run: |
+          az webapp config appsettings set \
+            --resource-group ${{ vars.AZURE_RESOURCE_GROUP }} \
+            --name ${{ vars.AZURE_WEBAPP_NAME }} \
+            --settings SSH_PASSWD="${{ secrets.SSH_PASSWD }}"
