@@ -1,4 +1,5 @@
 .env
 node_modules
-output.txt
 azure-credential.json
+output.txt
+.DS_Store
