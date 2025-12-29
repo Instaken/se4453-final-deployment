@@ -34,7 +34,7 @@ app.get('/hello', async (req, res) => {
         });
 
         await client.connect();
-        res.send("Merhaba Grup 12! Node.js ile Veritabanına ve Key Vault'a başarıyla bağlandık.");
+        res.send("Merhaba Grup 12! Node.js ile Veritabanına ve Key Vault'a başarıyla bağlandık. Test1");
         await client.end();
     } catch (err) {
         res.status(500).send("Hata: " + err.message);
