@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/Instaken/se4453-final-deployment#readme",
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "pg": "^8.13.1",
+    "@azure/identity": "^4.5.0",
+    "@azure/keyvault-secrets": "^4.9.0"
   }
 }
