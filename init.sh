@@ -1,7 +1,15 @@
 #!/bin/bash
+set -e
 
-echo "${SSH_PASSWD:-root:Docker!}" | chpasswd
+# SSH için gerekli dizini oluştur
+mkdir -p /run/sshd
 
-service ssh start
+# SSH şifresini ayarla (hata olsa bile devam et)
+echo "${SSH_PASSWD:-root:Docker!}" | chpasswd || true
+
+# SSH daemon'u başlat
+service ssh start || echo "SSH başlatılamadı, devam ediliyor..."
+
+# Node.js uygulamasını başlat
 cd /code
-node index.js
+exec node index.js
