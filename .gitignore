@@ -1,2 +1,4 @@
 .env
 node_modules
+azure-credential.json
+output.txt
