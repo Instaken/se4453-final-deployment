@@ -26,9 +26,11 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Login to ACR
+      - name: Authenticate with ACR using REGISTRY_USERNAME and REGISTRY_PASSWORD
         run: |
-          az acr login --name ${{ vars.ACR_NAME }}
+          echo "${{ secrets.REGISTRY_PASSWORD }}" | docker login ${{ vars.ACR_NAME }}.azurecr.io \
+            --username ${{ secrets.REGISTRY_USERNAME }} \
+            --password-stdin
 
       - name: Build and push Docker image to ACR
         run: |
